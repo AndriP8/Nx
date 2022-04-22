@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import NxWelcome from './nx-welcome';
 
 const StyledApp = styled.div`
   // Your style here
@@ -8,7 +7,7 @@ const StyledApp = styled.div`
 export function App() {
   return (
     <StyledApp>
-      <NxWelcome title="bookshelf" />
+      <h1>Welcome to the Nx</h1>
     </StyledApp>
   );
 }
