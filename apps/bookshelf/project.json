@@ -1,0 +1,83 @@
+{
+  "root": "apps/bookshelf",
+  "sourceRoot": "apps/bookshelf/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/bookshelf",
+        "index": "apps/bookshelf/src/index.html",
+        "baseHref": "/",
+        "main": "apps/bookshelf/src/main.tsx",
+        "polyfills": "apps/bookshelf/src/polyfills.ts",
+        "tsConfig": "apps/bookshelf/tsconfig.app.json",
+        "assets": [
+          "apps/bookshelf/src/favicon.ico",
+          "apps/bookshelf/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/bookshelf/src/environments/environment.ts",
+              "with": "apps/bookshelf/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "bookshelf:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "bookshelf:build:development"
+        },
+        "production": {
+          "buildTarget": "bookshelf:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/bookshelf/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/bookshelf"],
+      "options": {
+        "jestConfig": "apps/bookshelf/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

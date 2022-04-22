@@ -1,0 +1,28 @@
+{
+  "root": "apps/bookshelf-e2e",
+  "sourceRoot": "apps/bookshelf-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/bookshelf-e2e/cypress.json",
+        "devServerTarget": "bookshelf:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "bookshelf:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/bookshelf-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["bookshelf"]
+}
