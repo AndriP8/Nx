@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import Book from '../book/book';
+import Book, { BookProps } from '../book/book';
 
 /* eslint-disable-next-line */
 export interface BooksProps {}
 
 export interface BooksProps {
-  books: any[];
+  books: BookProps['book'][];
+  onAdd: (book: BookProps['book']) => void;
 }
 
 const StyledBooks = styled.div`
@@ -13,11 +14,11 @@ const StyledBooks = styled.div`
   border-radius: 4px;
 `;
 
-export function Books({ books }: BooksProps) {
+export function Books({ books, onAdd }: BooksProps) {
   return (
     <StyledBooks>
       {books.map((book) => (
-        <Book key={book.id} book={book} />
+        <Book key={book.id} book={book} onAdd={onAdd} />
       ))}
       <h1>Welcome to Books!</h1>
     </StyledBooks>
