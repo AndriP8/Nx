@@ -9,11 +9,7 @@ const StyledNavigationItem = styled.div`
 `;
 
 export function NavigationItem(props: LiHTMLAttributes<HTMLLIElement>) {
-  return (
-    <StyledNavigationItem>
-      <h1>Welcome to NavigationItem!</h1>
-    </StyledNavigationItem>
-  );
+  return <StyledNavigationItem>{props.children}</StyledNavigationItem>;
 }
 
 export default NavigationItem;
