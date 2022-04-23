@@ -1,7 +1,9 @@
 {
   "version": 2,
   "projects": {
+    "books-feature": "libs/books/feature",
     "bookshelf": "apps/bookshelf",
-    "bookshelf-e2e": "apps/bookshelf-e2e"
+    "bookshelf-e2e": "apps/bookshelf-e2e",
+    "ui": "libs/ui"
   }
 }
