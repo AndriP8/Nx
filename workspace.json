@@ -1,7 +1,9 @@
 {
   "version": 2,
   "projects": {
+    "books-data-access": "libs/books/data-access",
     "books-feature": "libs/books/feature",
+    "books-ui": "libs/books/ui",
     "bookshelf": "apps/bookshelf",
     "bookshelf-e2e": "apps/bookshelf-e2e",
     "ui": "libs/ui"

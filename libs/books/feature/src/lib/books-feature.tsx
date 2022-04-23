@@ -1,17 +1,30 @@
-import styled from 'styled-components';
+import { getBooks } from '@acme/books/data-access';
+import { Books } from '@acme/books/ui';
+import React from 'react';
 
 /* eslint-disable-next-line */
 export interface BooksFeatureProps {}
 
-const StyledBooksFeature = styled.div`
-  color: pink;
-`;
+interface Book {
+  id: number;
+  title: string;
+  author: string;
+  rating: number;
+  price: number;
+}
 
 export function BooksFeature(props: BooksFeatureProps) {
+  const [books, setBooks] = React.useState<Book[]>([]);
+
+  React.useEffect(() => {
+    setBooks(getBooks());
+  }, []);
+
   return (
-    <StyledBooksFeature>
-      <h1>Welcome to BooksFeature!</h1>
-    </StyledBooksFeature>
+    <>
+      <h2>Books</h2>
+      <Books books={books} />
+    </>
   );
 }
 
